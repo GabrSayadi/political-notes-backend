@@ -1,0 +1,30 @@
+{
+  "name": "political-notes-backend",
+  "version": "1.0.0",
+  "description": "my politcal notes",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrSayadi/political-notes-backend.git"
+  },
+  "keywords": [
+    "PNs"
+  ],
+  "author": "@https://github.com/GabrSayadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GabrSayadi/political-notes-backend/issues"
+  },
+  "homepage": "https://github.com/GabrSayadi/political-notes-backend",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
