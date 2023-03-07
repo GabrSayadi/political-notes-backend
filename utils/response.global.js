@@ -1,9 +1,9 @@
 /*
     response method:
-    @Error: errorRes(response) 
-    @NotFound: notFoundRes(response)
-    @Data: dataRes(response)
-    @Invalid email || password : invalidUserRes(response)
+    @Error: userSystmeError(response) 
+    @NotFound: userNotFound(response)
+    @Data: userData(response)
+    @Invalid email || password : invalidUser(response)
 */
 const { 
     ERROR_RES,
@@ -13,26 +13,42 @@ const {
 } = require('../Exception/Exception.global')
 
 module.exports = {
-    errorRes: (res) => {
+    /* user response */
+    userSystmeError: (res) => {
         return res.status(500).json(ERROR_RES);
     },
-    notFoundRes: (res)  => {
+    userNotFound: (res)  => {
         return res.status(401).json(NOT_FOUND);
     },
-    invalidUserRes: (res) => {
+    invalidUser: (res) => {
         return res.status(401).json(INVALID_USER);
     },
     notAccess: (res) => {
         return res.status(401).json(NONE_ACC)
-    }
-    ,
-    dataRes: (res, data) => {
+    },
+    userData: (res, data) => {
         return res.status(200).json({
-            code: '200',
+            code: '0',
             msg: 'success',
             data: {
                 data
             }
         });
     },
+    /* blog response */
+    blogSystemError: (res) => {
+        return res.status(500).json(ERROR_RES);
+    },
+    blogNotFound: (res)  => {
+        return res.status(401).json(NOT_FOUND);
+    },
+    blogData: (res, data) => {
+        return res.status(200).json({
+            code: '0',
+            msg: 'success',
+            data: {
+                data
+            }
+        });
+    }
 }

@@ -9,5 +9,5 @@ module.exports = {
             callback(err)
         :
             callback(null, data)
-    },
+    }
 }

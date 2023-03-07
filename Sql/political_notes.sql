@@ -24,6 +24,7 @@ create table if not exists blog
     blogTitle  varchar(255)                            not null comment 'blog title',
     blogBody   text                                    not null comment 'blog body',
     createAt   datetime     default CURRENT_TIMESTAMP  not null comment 'create time',
+    updateAt   datetime     default CURRENT_TIMESTAMP  not null comment 'update time',
     author     varchar(255)                            not null comment 'blog author',
     createUser bigint                                  not null comment 'create blog user'
 ) 

@@ -1,5 +1,5 @@
 /* 
-    All Date function uitle
+    All Date function utils
     @function: createUpdateTime() => Create and update time
 */
 

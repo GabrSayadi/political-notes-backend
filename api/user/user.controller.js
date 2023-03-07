@@ -7,10 +7,10 @@ const {
     listUser
 } = require('./user.service')
 const {
-    errorRes,
-    dataRes,
+    userSystmeError,
+    userData,
     notFoundRes,
-    invalidUserRes
+    invalidUser
 } = require('../../utils/response.global')
 const { sign } = require('jsonwebtoken')
 
@@ -21,9 +21,9 @@ module.exports = {
         
         userRegister(registerData, (err, data) => {
             if (err)
-                errorRes(res)
+                userSystmeError(res)
 
-            dataRes(res, data.insertId)
+            userData(res, data.insertId)
         });
     },
     login: (req, res) => {
@@ -31,10 +31,10 @@ module.exports = {
 
         userLogin(loginData, (err, data) => {
             if (err)
-                errorRes(res)
+                userSystmeError(res)
 
             if (!data.length)
-                invalidUserRes(res)
+                invalidUser(res)
             else {
                 const token = sign(
                     {result: data},
@@ -57,12 +57,12 @@ module.exports = {
 
         updateUser(updateData, (err, data) => {
             if (err)
-                errorRes(res)
+                userSystmeError(res)
             
             if (!data)
                 notFoundRes(res)
             else 
-                dataRes(res, data.affectedRows)
+                userData(res, data.affectedRows)
         }) 
     },
     deleteUserById: (req, res) => {
@@ -70,12 +70,12 @@ module.exports = {
 
         deleteUser(id, (err, data) => {
             if (err) 
-                errorRes(res)
+                userSystmeError(res)
             
             if (!data)
                 notFoundRes(res)
             else 
-                dataRes(res, data.affectedRows)
+                userData(res, data.affectedRows)
         })
     },
     getUser: (req, res) => {
@@ -83,22 +83,21 @@ module.exports = {
 
         getUserById(id,(err, data) => {
                 if (err)
-                    errorRes(res)
+                    userSystmeError(res)
 
                 if (!data.length)
                     notFoundRes(res)
                 else
-                    dataRes(res, data)
+                    userData(res, data)
                 
         });
     },
     getUsers: (req, res) => {
 
         listUser((err, data) => {
-            if (err) {
-                errorRes(res)
-            }
-            dataRes(res, data)
+            if (err)
+                userSystmeError(res)
+            userData(res, data)
         });
     }
 }

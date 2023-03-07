@@ -5,7 +5,7 @@
 module.exports = {
     ERROR_RES: {
         code: 'x0001',
-        msg: "Database connection errror"
+        msg: "System Errror"
     },
     NOT_FOUND: {
         code: 'x0002',
