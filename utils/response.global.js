@@ -50,5 +50,18 @@ module.exports = {
                 data
             }
         });
-    }
+    },
+    /* check token */
+    checkTokenError: (res) => {
+        return res.json({
+            success: 0,
+            message: "Invalid token"
+        });
+    },
+    noneAccess: (res) => {
+        return res.json({
+            success: 0,
+            message: "Access denied! unautorized user"
+        })
+    }   
 }

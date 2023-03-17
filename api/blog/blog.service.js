@@ -3,7 +3,7 @@ const { serviceCallBack } = require("../../utils/callback.global");
 const { createUpdateTime } = require("../../utils/time.global")
 
 module.exports = {
-    createBlog: (data, callback) => {
+    createBlog: (data, callback) => { /* Create Blog */
         pool.query(
             `insert into blog(blogTitle, blogBody, createAt, updateAt, author, createUser) values(?,?,?,?,?,?)`,
             [
@@ -19,7 +19,7 @@ module.exports = {
             }
         );
     },
-    updateBlog: (data, callback) => {
+    updateBlog: (data, callback) => { /* Update Blog */
         pool.query(
             `update blog set blogTitle = ?, blogBody = ?, updateAt =?  where id = ?`,
             [
@@ -33,7 +33,7 @@ module.exports = {
             }
         );
     },
-    deleteBlog: (data, callback) => {
+    deleteBlog: (data, callback) => { /* Delete Blog */
         pool.query(
             `delete from blog where id = ?`,
             [
@@ -44,7 +44,7 @@ module.exports = {
             }
         );
     },
-    getListOfBlog: callback => {
+    getListOfBlog: callback => { /* Blog list */
         pool.query(
             `select * from blog`,
             [],
@@ -53,7 +53,7 @@ module.exports = {
             }
         );
     },
-    getBlogById: (data, callback) => {
+    getBlogById: (data, callback) => { /* Get Blog By Id */
         pool.query(
             `select * from blog where id = ?`,
             [

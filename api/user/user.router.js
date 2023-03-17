@@ -7,14 +7,13 @@ const {
     getUser,
     getUsers
 } = require('../user/user.controller');
-
+const { checkToken } = require('../../auth/authToken')
 
 router.post("/register", register);
 router.post("/login", login);
-router.patch("/", updateUserById);
-router.delete("/", deleteUserById);
-router.get("/:id", getUser);
-router.get("/", getUsers);
-
+router.get("/", checkToken, getUsers);
+router.get("/:id", checkToken, getUser);
+router.patch("/", checkToken, updateUserById);
+router.delete("/", checkToken, deleteUserById);
 
 module.exports = router;

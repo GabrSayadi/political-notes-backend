@@ -3,7 +3,7 @@ const { createUpdateTime } = require('../../utils/time.global') /* Date utiles *
 const { serviceCallBack } = require('../../utils/callback.global') /* Callback function */
 
 module.exports = {
-    userRegister: (data, callback) => {
+    userRegister: (data, callback) => { /* Create new User */
         pool.query(
             `insert into user(userName, userAccount, userRole, userPassword, createAt, updateAt) values(?,?,?,?,?,?)`,
             [
@@ -19,7 +19,7 @@ module.exports = {
             }
         )
     },
-    userLogin: (data, callback) => {
+    userLogin: (data, callback) => { /* login */
         pool.query(
             `select * from user where userAccount =? and userPassword =?`,
             [
@@ -31,7 +31,7 @@ module.exports = {
             }
         )
     },
-    updateUser: (data, callback) => {
+    updateUser: (data, callback) => { /* Update User by Id */
         pool.query(
             `update user set userName = ?, userAccount = ?, userPassword = ?, updateAt = ? where id = ?`,
             [
@@ -46,7 +46,7 @@ module.exports = {
             }
         )
     },
-    deleteUser: (data, callback) => {
+    deleteUser: (data, callback) => { /* Delete User */
         pool.query(
             `delete from user where id = ?`,
             [ data.id ],
@@ -55,7 +55,7 @@ module.exports = {
             }
         )
     },
-    getUserById:  (id, callback) => {
+    getUserById:  (id, callback) => { /* Get User By Id */
         pool.query(
             `select * from user where id = ?`,
             [ id ],
@@ -64,7 +64,7 @@ module.exports = {
             }
         )
     },
-    listUser: callback => {
+    listUser: callback => { /* User list */
         pool.query(
             `select * from user`,
             [],

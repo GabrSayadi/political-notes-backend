@@ -12,37 +12,30 @@ const {
 } =  require('../../utils/response.global');
 
 module.exports = {
-    createBlog: (req, res) => {
-        const blogData = req.body
+    createBlog: (req, res) => { /* Create new Blog */
+        const dataOfBlog = req.body
 
-        createBlog(blogData, (err, data) => {
+        createBlog(dataOfBlog, (err, data) => {
             if (err)
-                return res.status(500).json({
-                    code: 'x0001',
-                    msg: 'System Error',
-                    error: err
-                })
+                blogSystemError(res);
             
-            return res.status(200).json({
-                code: 'x0001',
-                msg: data
-            })
+            blogData(res, data.affectedRows);
         });
     },
-    updateBlogById: (req, res) => {
+    updateBlogById: (req, res) => { /* Update Blog */
         const updateData = req.body
 
         updateBlog(updateData, (err, data) => {
             if (err)
-                blogSystemError(res)
+                blogSystemError(res);
             
             if (!data)
-                blogNotFound(res)
+                blogNotFound(res);
             else 
-                blogData(res, data.affectedRows)
+                blogData(res, data.affectedRows);
         });
     },
-    deleteBlogById: (req, res) => {
+    deleteBlogById: (req, res) => { /* Delete Blog */
         const id = req.body
 
         deleteBlog(id, (err, data) => {
@@ -55,7 +48,7 @@ module.exports = {
                 blogData(res, data.affectedRows)
         });
     },
-    listOfBlog: (req, res) => {
+    listOfBlog: (req, res) => { /* Blog List */
         
         getListOfBlog((err, data) => {
             if (err)
@@ -64,7 +57,7 @@ module.exports = {
             blogData(res, data)
         });
     },
-    getBlogWithId: (req, res) => {
+    getBlogWithId: (req, res) => { /* Get Blog by id */
         const id = req.params.id
 
         getBlogById(id, (err, data) => {

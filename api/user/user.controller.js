@@ -16,7 +16,7 @@ const { sign } = require('jsonwebtoken')
 
 
 module.exports = {
-    register: (req, res) => {
+    register: (req, res) => {  /* Create new user */
         const registerData = req.body;
         
         userRegister(registerData, (err, data) => {
@@ -26,7 +26,7 @@ module.exports = {
             userData(res, data.insertId)
         });
     },
-    login: (req, res) => {
+    login: (req, res) => { /* login User */
         const loginData = req.body;
 
         userLogin(loginData, (err, data) => {
